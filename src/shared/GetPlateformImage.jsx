@@ -5,7 +5,7 @@ import HackerEarth from "../assets/platform-logos/hackerearth.png";
 import LeetCode from "../assets/platform-logos/leetcode.png";
 import AtCoder from "../assets/platform-logos/atcoder.png";
 import Topcoder from "../assets/platform-logos/topcoder.png";
-import unknown from "../assets/platform-logos/unknown.png";
+import unknown from "../assets/platform-logos/unknown_plateform.png";
 
 const GetPlateformImage = function (site) {
   var uri = "";

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import noInternetImg from "../assets/no-internet.png";
 
 const NoInternetConnection = (props) => {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ContestDetails from "../components/ContestDetails";
 
 const Home = () => {
@@ -11,22 +11,19 @@ const Home = () => {
 
   // handing menu button active and non-active
   const [activeButton, setActiveButton] = useState(null);
-  const handleButtonClick = (buttonId) => {
-    setActiveButton(buttonId);
-  };
 
-  // getting selected sites
   let selectedSites = JSON.parse(localStorage.getItem("selected_sites"));
 
   useEffect(() => {
-    // fetching all contests details
     fetch("https://kontests.net/api/v1/all")
       .then((res) => res.json())
       .then(
         (result) => {
           setLoaded(true);
+          result.sort(
+            (a, b) => parseFloat(a.duration) - parseFloat(b.duration)
+          );
           setItems(result);
-          // showing all sites at home page of extension
           setFilter(result);
         },
         (error) => {
@@ -36,47 +33,44 @@ const Home = () => {
       );
   }, []);
 
-  // after fetching, filtering to show diffent results
-  const myContests = (e) => {
-    handleButtonClick(1);
-    filteredList = items.filter(function (e) {
-      return selectedSites[e.site] === true;
-    });
+  const filterContests = (filterFn, headingText, buttonId) => {
+    setActiveButton(buttonId);
+    const filteredList = items.filter(filterFn);
+    setHeading(headingText);
     setFilter(filteredList);
-    setHeading("My Contest");
   };
 
-  const liveContests = (e) => {
-    handleButtonClick(2);
-    filteredList = items.filter(function (e) {
-      // filtering max contest duration is 2 months (sec)
-      return (
+  // after fetching, filtering to show diffent results
+  const myContests = () => {
+    filterContests((e) => selectedSites[e.site] === true, "My Contests", 1);
+  };
+
+  // filtering max contest duration is 2 months (sec)
+  const liveContests = () => {
+    filterContests(
+      (e) =>
         selectedSites[e.site] === true &&
         e.status === "CODING" &&
-        parseInt(e.duration) <= 5260000
-      );
-    });
-    setFilter(filteredList);
-    setHeading("Live Contests");
-    console.log("this is my filter: ", filter);
+        parseInt(e.duration) <= 5260000,
+      "Live Contests",
+      2
+    );
   };
 
-  const contestsIn24hours = (e) => {
-    handleButtonClick(3);
-    filteredList = items.filter(function (e) {
-      return selectedSites[e.site] === true && e.in_24_hours === "Yes";
-    });
-    setFilter(filteredList);
-    setHeading("Contests within 24 hours");
+  const contestsIn24hours = () => {
+    filterContests(
+      (e) => selectedSites[e.site] === true && e.in_24_hours === "Yes",
+      "Contests within 24 hours",
+      3
+    );
   };
 
-  const upcodingContests = (e) => {
-    handleButtonClick(4);
-    filteredList = items.filter(function (e) {
-      return selectedSites[e.site] === true && e.status === "BEFORE";
-    });
-    setFilter(filteredList);
-    setHeading("Contests in Future");
+  const upcodingContests = () => {
+    filterContests(
+      (e) => selectedSites[e.site] === true && e.status === "BEFORE",
+      "Contests in Future",
+      4
+    );
   };
 
   return (
@@ -84,25 +78,25 @@ const Home = () => {
       <div className="menu">
         <button
           className={activeButton === 1 ? "btn menu-btn-active" : "btn "}
-          onClick={(e) => myContests(e)}
+          onClick={myContests}
         >
           My Contests
         </button>
         <button
           className={activeButton === 2 ? "btn menu-btn-active" : "btn "}
-          onClick={(e) => liveContests(e)}
+          onClick={liveContests}
         >
           <span className="live btn-5">Live</span> Contest
         </button>
         <button
           className={activeButton === 3 ? "btn menu-btn-active" : "btn "}
-          onClick={(e) => contestsIn24hours(e)}
+          onClick={contestsIn24hours}
         >
           In 24 Hours
         </button>
         <button
           className={activeButton === 4 ? "btn menu-btn-active" : "btn "}
-          onClick={(e) => upcodingContests(e)}
+          onClick={upcodingContests}
         >
           Upcomings
         </button>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import getImage from "../shared/GetPlateformImage";
 import remindOff from "../assets/remindme-off.png";
 import remindOn from "../assets/remindme-on.png";

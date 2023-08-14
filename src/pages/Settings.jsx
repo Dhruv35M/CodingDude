@@ -1,4 +1,3 @@
-import React from "react";
 import plateforms from "../shared/plateformsList";
 import PlateformCard from "../components/PlateformCard";
 import plateformImage from "../shared/GetPlateformImage";

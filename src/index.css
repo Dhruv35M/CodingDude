@@ -28,6 +28,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: rgb(42 41 41);
   color: white;
+  letter-spacing: 0lvw;
 }
 
 body::-webkit-scrollbar {
@@ -178,13 +179,12 @@ h2 {
   flex-direction: column;
   margin: auto;
   text-align: center;
-  color: hsl(0, 0%, 0%);
   font-weight: 300;
-  font-family: "Cherry Bomb One", cursive;
-  color: white;
+  font-family: Cherry Bomb One, cursive;
+  color: #fff;
   font-size: 20px;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: black;
+  -webkit-text-stroke-width: 0.7px;
+  -webkit-text-stroke-color: #000000;
 }
 
 .menu {
@@ -239,16 +239,6 @@ h2 {
   50% {
     opacity: 0;
   }
-}
-
-footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: #1b1b1b;
-  color: white;
-  text-align: center;
 }
 
 .flex-col {
@@ -324,7 +314,8 @@ footer {
 .plateform-list {
   position: relative;
   top: 150px;
-  padding-bottom: 10px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
 }
 
 .plateform-checkbox {
@@ -368,6 +359,33 @@ footer {
   align-items: center;
   justify-content: center;
   height: 350px;
+}
+
+footer {
+  display: flex;
+  height: 5rem;
+  background: #202124;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border-radius: 3px;
+  font-size: 18px;
+}
+
+footer button {
+  height: 32px;
+  border-radius: 4px;
+  font-size: 16px;
+  margin: 8px;
+  background: #cb3f14;
+  border: 0px;
+  transition: 0.3s ease-in;
+  padding: 6px;
+  transition: 0.3s ease-in;
+}
+
+footer button:hover {
+  background-color: #b6850a;
 }
 
 .no-internet-container > img {

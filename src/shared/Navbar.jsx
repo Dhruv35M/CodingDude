@@ -1,10 +1,8 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import home from "../assets/home.png";
 import settings from "../assets/settings.png";
 
 const Navbar = () => {
-  let location = useLocation();
-  console.log(location);
   return (
     <div className="navbar">
       <nav>

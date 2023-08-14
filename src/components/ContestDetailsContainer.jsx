@@ -3,6 +3,7 @@ import getImage from "../shared/GetPlateformImage";
 import remindOff from "../assets/remindme-off.png";
 import remindOn from "../assets/remindme-on.png";
 import calender from "../assets/calender.png";
+import { FormatedDateForNotification } from "../shared/utils.js";
 
 const ContestDetailsContainer = (props) => {
   const {
@@ -23,7 +24,6 @@ const ContestDetailsContainer = (props) => {
   const [remindImg, setRemindImg] = useState(remindOff);
 
   // checking did user already selected for notification or not
-  console.log(calStartTime);
   const dateTime = FormatedDateForNotification(calStartTime);
 
   useEffect(() => {
@@ -38,35 +38,13 @@ const ContestDetailsContainer = (props) => {
     }
   }, []);
 
-  // Converting date format from '20230616T180000' to '2023-06-16T17:55'
-  function FormatedDateForNotification(dateTimeString) {
-    const year = dateTimeString.substr(0, 4);
-    const month = dateTimeString.substr(4, 2);
-    const day = dateTimeString.substr(6, 2);
-    const hour = dateTimeString.substr(9, 2);
-    const minute = dateTimeString.substr(11, 2);
-
-    // setting notification time 5 minutes advanced than actual time
-    const date = new Date(`${year}-${month}-${day}T${hour}:${minute}`);
-    date.setMinutes(date.getMinutes() - 5);
-
-    const formattedDate = `${date.getFullYear()}-${(date.getMonth() + 1)
-      .toString()
-      .padStart(2, "0")}-${date.getDate().toString().padStart(2, "0")}T${date
-      .getHours()
-      .toString()
-      .padStart(2, "0")}:${date.getMinutes().toString().padStart(2, "0")}`;
-    return formattedDate;
-  }
-
   // setting notification for reminder
   const remindBeforeFiveMinutes = (n) => {
-    console.log({ dateTime });
     let notification = JSON.parse(localStorage.getItem("notification")) || [];
 
     // Get today's date
     const today = new Date().toISOString().slice(0, 19);
-    console.log({ today });
+
     // Remove dates from existingNotification that are less than today
     notification = notification.filter(
       (element) => new Date(element) >= new Date(today)
@@ -103,7 +81,6 @@ const ContestDetailsContainer = (props) => {
 
   // link for google calender with event date
   const addToGoogleCalender = () => {
-    console.log("cName: ", cName, sDate, sTime, eDate, eTime, cUrl);
     let result =
       "https://www.google.com/calendar/render?action=TEMPLATE&text=" +
       cName +
@@ -126,7 +103,12 @@ const ContestDetailsContainer = (props) => {
             alt="contest-image"
             className="contest-logo"
           />
-          <a href={cUrl} target="_blank" className="link">
+          <a
+            href={cUrl}
+            target="_blank"
+            className="link"
+            rel="noopener noreferrer"
+          >
             <h3 className="contest-heading">{cName}</h3>
           </a>
 
@@ -141,7 +123,12 @@ const ContestDetailsContainer = (props) => {
               />
             )}
 
-            <a href={calUrl} target="_blank" className="link">
+            <a
+              href={calUrl}
+              target="_blank"
+              className="link"
+              rel="noopener noreferrer"
+            >
               <img
                 className="remind-me"
                 src={calender}

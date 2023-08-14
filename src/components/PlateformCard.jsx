@@ -1,17 +1,23 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 function PlateformCard({ name, url, imgUrl, isChecked, toggleCheckBox }) {
   const [checked, setChecked] = useState(isChecked);
 
-  const togglePlateforms = (e) => {
-    checked === true ? setChecked(false) : setChecked(true);
-    checked === true ? toggleCheckBox(name, false) : toggleCheckBox(name, true);
+  const togglePlateforms = () => {
+    const updatedCheckbox = !checked;
+    setChecked(updatedCheckbox);
+    toggleCheckBox(name, updatedCheckbox);
   };
 
   return (
     <div className="plateform-container">
       <div className="contest-logo-heading">
-        <a href={url} target="_blank" className="link">
+        <a
+          href={url}
+          target="_blank"
+          className="link"
+          rel="noopener noreferrer"
+        >
           <img src={imgUrl} alt="contest-image" className="plateform-logo" />
           <h3 className="plateform-name">{name}</h3>
         </a>
@@ -23,7 +29,7 @@ function PlateformCard({ name, url, imgUrl, isChecked, toggleCheckBox }) {
           className="checkbox"
           value={checked}
           checked={checked}
-          onChange={(e) => togglePlateforms(e)}
+          onChange={togglePlateforms}
         />
       </div>
     </div>

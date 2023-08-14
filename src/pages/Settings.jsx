@@ -1,13 +1,14 @@
 import plateforms from "../shared/plateformsList";
 import PlateformCard from "../components/PlateformCard";
 import plateformImage from "../shared/GetPlateformImage";
+import Footer from "../components/Footer";
 
 const Settings = () => {
   // geting already selected plateforms
   let selectedSites = JSON.parse(localStorage.getItem("selected_sites"));
 
   // toggle user selection
-  const toggleCheckBox = (name, updatedStatus) => {
+  const toggleCheckBox = (name) => {
     selectedSites[name]
       ? (selectedSites[name] = false)
       : (selectedSites[name] = true);
@@ -30,6 +31,7 @@ const Settings = () => {
             toggleCheckBox={toggleCheckBox}
           />
         ))}
+        <Footer />
       </div>
     </>
   );

@@ -18,8 +18,8 @@ const Navbar = () => {
           </div>
         </NavLink>
         <div className="motivation text-focus-in">
-          <h3>Seize every contest,</h3>
-          <h3>let no opportunity slip away.</h3>
+          <h3>Push yourself, participate,</h3>
+          <h3>let your coding skills flourish!</h3>
           {/* <h3>Never Ever,</h3>
           <h3>Miss a Single Contest</h3> */}
         </div>

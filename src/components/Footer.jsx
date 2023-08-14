@@ -4,8 +4,13 @@ const Footer = () => {
   return (
     <footer>
       <p>Do you like CodingDude?</p>
-      <button className="link">
-        <a href={ratingURL} target="_blank" rel="noopener noreferrer">
+      <button>
+        <a
+          href={ratingURL}
+          className="link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Rate it!
         </a>
       </button>

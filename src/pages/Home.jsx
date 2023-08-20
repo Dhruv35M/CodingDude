@@ -15,14 +15,23 @@ const Home = () => {
   let selectedSites = JSON.parse(localStorage.getItem("selected_sites"));
 
   useEffect(() => {
+    const currentDate = new Date();
     fetch("https://kontests.net/api/v1/all")
       .then((res) => res.json())
       .then(
         (result) => {
           setLoaded(true);
+          // sorted by duration less to more
           result.sort(
             (a, b) => parseFloat(a.duration) - parseFloat(b.duration)
           );
+
+          // filter out expired/ invalid cotests
+          result = result.filter((item) => {
+            const endTime = new Date(item.end_time);
+            return endTime > currentDate;
+          });
+
           setItems(result);
           setFilter(result);
         },

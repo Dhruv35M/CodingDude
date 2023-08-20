@@ -1,5 +1,7 @@
 import Loading from "../shared/Loading";
 import ContestDetailsContainer from "./ContestDetailsContainer";
+import cat from "../assets/cat.jpg";
+
 import {
   contestDuration,
   isValidForNotification,
@@ -30,7 +32,8 @@ const ContestDetails = (props) => {
       <ul>
         {items.length < 1 ? (
           <div className="failed-to-fetch">
-            <h2 className="center">No Contest!</h2>
+            <img src={cat} className="contest-not-found" alt="not found" />
+            <h2 className="center">No Contest Available!</h2>
           </div>
         ) : (
           items.map((item) => (

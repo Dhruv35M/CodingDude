@@ -3,13 +3,16 @@ import home from "../assets/home.png";
 import settings from "../assets/settings.png";
 
 const Navbar = () => {
+  // background: isActive ? "#5c71b2" : "",
+
   return (
     <div className="navbar">
       <nav>
         <NavLink
           to="/"
+          className="navbar-links"
           style={({ isActive }) => ({
-            background: isActive ? "#5c71b2" : "",
+            borderBottom: isActive ? "2px solid skyblue" : "",
             borderRadius: "3px 20px",
           })}
         >
@@ -17,16 +20,19 @@ const Navbar = () => {
             <img className="navbar-img" src={home} />
           </div>
         </NavLink>
+
         <div className="motivation text-focus-in">
           <h3>Push yourself, participate,</h3>
           <h3>let your coding skills flourish!</h3>
           {/* <h3>Never Ever,</h3>
           <h3>Miss a Single Contest</h3> */}
         </div>
+
         <NavLink
           to="/settings"
+          className="navbar-links"
           style={({ isActive }) => ({
-            background: isActive ? "#0c7a96" : "",
+            borderBottom: isActive ? "2px solid skyblue" : "",
             borderRadius: "20px 3px",
           })}
         >
@@ -37,6 +43,7 @@ const Navbar = () => {
       </nav>
     </div>
   );
+  // background: isActive ? "#0c7a96" : "",
 };
 
 export default Navbar;

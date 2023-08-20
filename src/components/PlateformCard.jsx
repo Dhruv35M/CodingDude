@@ -11,7 +11,7 @@ function PlateformCard({ name, url, imgUrl, isChecked, toggleCheckBox }) {
 
   return (
     <div className="plateform-container">
-      <div className="contest-logo-heading">
+      <div className="contest-logo-heading" title="go to website">
         <a
           href={url}
           target="_blank"

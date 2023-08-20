@@ -10,11 +10,11 @@
 
 ::-moz-selection {
   /* Code for Firefox */
-  background: gray;
+  background: #393737;
 }
 
 ::selection {
-  background: gray;
+  background: #393737;
 }
 
 body {
@@ -38,9 +38,11 @@ body::-webkit-scrollbar {
 
 .navbar {
   /* background-color: #48acce; */
-  background: rgb(2, 0, 36);
+  /* background: rgb(2, 0, 36); */
   /* background: linear-gradient(90deg, rgb(176 173 255) 0%, rgba(0,212,255,1) 100%, rgba(9,12,123,1) 36%, rgba(0,212,255,1) 100%); */
-  background: linear-gradient(90deg, #928efb, #05a2c2 100%, #040658 0, #025c6f);
+  /* background: linear-gradient(90deg, #928efb, #05a2c2 100%, #040658 0, #025c6f); */
+  background: #1259a373;
+  backdrop-filter: blur(5px);
   border-radius: 0 0 50px 50px;
   padding: 12px;
   top: 0px;
@@ -52,6 +54,7 @@ body::-webkit-scrollbar {
 .navbar-img {
   width: 32px;
   height: 32px;
+  filter: invert(1);
 }
 
 nav {
@@ -59,6 +62,10 @@ nav {
   justify-content: space-between;
   align-items: center;
   margin: 0px;
+}
+
+.navbar-links {
+  border-bottom: 2px solid transparent;
 }
 
 .navbar-left {
@@ -70,6 +77,14 @@ nav {
 .navbar-right {
   padding: 10px;
 }
+/* .navbar-right:hover,
+.navbar-right:active {
+  mix-blend-mode: overlay;
+}
+.navbar-left:hover,
+.navbar-left:active {
+  mix-blend-mode: overlay;
+} */
 
 .navbar img:hover {
   cursor: pointer;
@@ -93,6 +108,8 @@ nav {
   margin: 10px;
   /* background-color: rgb(23, 24, 26); */
   /* background-color: #333435; */
+  /* background-color: #292f33; */
+  /* background-color: #2c2c2c; */
   background-color: #292f33;
   border-radius: 10px;
   display: flex;
@@ -104,7 +121,8 @@ nav {
 }
 
 .contest-container:hover {
-  background-color: #203641;
+  /* background-color: #203641; */
+  background-color: #2c2c2c;
   transition: background-color 0.5s ease;
 }
 
@@ -164,12 +182,12 @@ h2 {
 
 .contest--time {
   /* background-color: black; */
-  background-color: #021014;
-  color: white;
+  background-color: #1b1b1b;
   padding: 2px;
   margin: 2px;
   /* border-radius: 5px; */
   font-size: larger;
+  font-weight: 400;
 }
 
 .extratimestyleofstart {
@@ -178,6 +196,7 @@ h2 {
 
 .extratimestyleofend {
   color: red;
+  font-weight: 500;
 }
 
 .motivation {
@@ -195,7 +214,7 @@ h2 {
 
 .menu {
   align-items: center;
-  background-color: #1b1b1b;
+  background-color: #1d1d1d;
   display: flex;
   justify-content: center;
   padding-bottom: 10px;
@@ -217,7 +236,7 @@ h2 {
 }
 
 .menu button:hover {
-  border-color: #6395e8;
+  border-color: skyblue;
   transition-timing-function: ease-in-out;
   cursor: pointer;
   transition-timing-function: ease-in-out;
@@ -225,8 +244,8 @@ h2 {
 
 /* .menu button:active */
 .menu-btn-active {
-  border-color: #6395e8 !important;
-  color: #7991f1 !important;
+  border-color: skyblue !important;
+  color: skyblue !important;
   /* background-color: rgb(34 93 155 / 12%) !important; */
   transition-timing-function: ease-in-out !important;
   cursor: pointer !important;
@@ -283,13 +302,13 @@ h2 {
 }
 
 .duration-time {
-  color: #7691ef;
+  color: skyblue;
   font-size: larger;
 }
 
 .fixed-menu {
   align-items: center;
-  background-color: #1b1b1b;
+  background-color: #1d1d1d;
   display: flex;
   justify-content: center;
   padding-bottom: 10px;
@@ -304,6 +323,7 @@ h2 {
 .plateform-container {
   align-items: center;
   background-color: #292f33;
+  /* background-color: #2c2c2c; */
   border-radius: 10px;
   box-shadow: 0 54px 55px rgb(0 0 0 / 25%), 0 -12px 30px rgb(0 0 0 / 12%),
     0 4px 6px rgb(0 0 0 / 12%), 0 12px 13px rgb(0 0 0 / 17%),
@@ -318,7 +338,8 @@ h2 {
 }
 
 .plateform-container:hover {
-  background-color: #203641;
+  /* background-color: #203641; */
+  background-color: #2c2c2c;
   transition: background-color 0.5s ease;
 }
 
@@ -406,6 +427,23 @@ footer button:hover {
   margin: 30px;
 }
 
+.contest-not-found {
+  height: 250px;
+  clip-path: polygon(
+    0% 15%,
+    15% 15%,
+    15% 0%,
+    85% 0%,
+    85% 15%,
+    100% 15%,
+    100% 85%,
+    85% 85%,
+    85% 100%,
+    15% 100%,
+    15% 85%,
+    0% 85%
+  );
+}
 .no-internet-container {
   min-height: 320px;
   height: auto;
@@ -425,7 +463,7 @@ footer button:hover {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 100px;
+  margin: 30px;
   font-size: 20px;
 }
 

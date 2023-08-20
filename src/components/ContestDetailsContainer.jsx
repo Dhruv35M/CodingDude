@@ -109,7 +109,9 @@ const ContestDetailsContainer = (props) => {
             className="link"
             rel="noopener noreferrer"
           >
-            <h3 className="contest-heading">{cName}</h3>
+            <h3 className="contest-heading" title="go to contest page">
+              {cName}
+            </h3>
           </a>
 
           <div className="calender-bell">

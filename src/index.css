@@ -162,6 +162,7 @@ h2 {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   display: -webkit-box;
+  max-width: 170px;
   overflow: hidden;
   min-width: 164px;
 }
@@ -178,6 +179,7 @@ h2 {
 .contest--date {
   color: rgb(232, 234, 237);
   width: 100px;
+  margin-bottom: 5px;
 }
 
 .contest--time {
@@ -395,16 +397,49 @@ h2 {
 
 footer {
   display: flex;
-  height: 5rem;
   background: #202124;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  flex-direction: column;
   border-radius: 3px;
+  margin-top: 28px;
   font-size: 18px;
 }
 
-footer button {
+footer .shortcut-key {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #6852eb;
+  border-radius: 4px;
+  top: -14px;
+  padding: 8px 12px;
+  position: relative;
+}
+
+footer .shortcut-key p {
+  padding: 2px;
+}
+
+footer .shortcut-key span {
+  font-weight: 400;
+  background-color: #0000004a;
+  border-radius: 2px;
+  margin: 0 2px;
+  padding: 6px;
+  font-size: 16px;
+}
+
+footer .rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+footer .rating button {
   height: 32px;
   border-radius: 4px;
   font-size: 16px;
@@ -416,7 +451,7 @@ footer button {
   transition: 0.3s ease-in;
 }
 
-footer button:hover {
+footer .rating button:hover {
   background-color: #b6850a;
 }
 

@@ -23,7 +23,7 @@ const NoInternetConnection = (props) => {
   } else {
     return (
       <div className="no-internet-container">
-        <img src={noInternetImg} alt="no internet" />
+        <img src={noInternetImg} draggable={false} alt="no internet" />
         <h3 className="">No Interner Connection</h3>
         <p> Please try again later.</p>
       </div>

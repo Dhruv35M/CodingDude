@@ -4,7 +4,6 @@ import settings from "../assets/settings.png";
 
 const Navbar = () => {
   // background: isActive ? "#5c71b2" : "",
-
   return (
     <div className="navbar">
       <nav>
@@ -22,10 +21,11 @@ const Navbar = () => {
         </NavLink>
 
         <div className="motivation text-focus-in">
-          <h3>Push yourself, participate,</h3>
-          <h3>let your coding skills flourish!</h3>
-          {/* <h3>Never Ever,</h3>
-          <h3>Miss a Single Contest</h3> */}
+          <h3> Don't Procrastinate, </h3>
+          <h3> Compete now and Elevate! </h3>
+          {/* <h3>Don't delay, compete today!</h3> */}
+          {/* <h3>Push yourself, participate,</h3>
+          <h3>let your coding skills flourish!</h3> */}
         </div>
 
         <NavLink

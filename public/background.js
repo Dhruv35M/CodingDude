@@ -1,9 +1,9 @@
-chrome.alarms.onAlarm.addListener(function (alarm) {
+chrome.alarms.onAlarm.addListener((alarm) => {
   showAlarmNotification();
 });
 
 // Function to show the alarm notification
-function showAlarmNotification() {
+const showAlarmNotification = () => {
   const notificationOptions = {
     type: "basic",
     title: "Get ready Champion, Contest is about to start.",
@@ -14,4 +14,4 @@ function showAlarmNotification() {
   };
 
   chrome.notifications.create("", notificationOptions);
-}
+};

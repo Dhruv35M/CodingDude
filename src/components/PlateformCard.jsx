@@ -18,7 +18,12 @@ function PlateformCard({ name, url, imgUrl, isChecked, toggleCheckBox }) {
           className="link"
           rel="noopener noreferrer"
         >
-          <img src={imgUrl} alt="contest-image" className="plateform-logo" />
+          <img
+            src={imgUrl}
+            alt="contest-image"
+            draggable={false}
+            className="plateform-logo"
+          />
           <h3 className="plateform-name">{name}</h3>
         </a>
       </div>

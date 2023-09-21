@@ -3,7 +3,7 @@ import getImage from "../shared/GetPlateformImage";
 import remindOff from "../assets/remindme-off.png";
 import remindOn from "../assets/remindme-on.png";
 import calender from "../assets/calender.png";
-import { FormatedDateForNotification } from "../shared/utils.js";
+import { FormatedDateForNotification } from "../shared/dateTimeUtility.js";
 
 const ContestDetailsContainer = (props) => {
   const {
@@ -39,19 +39,19 @@ const ContestDetailsContainer = (props) => {
   }, []);
 
   // setting notification for reminder
-  const remindBeforeFiveMinutes = (n) => {
+  const remindBeforeFiveMinutes = (addNotification) => {
     let notification = JSON.parse(localStorage.getItem("notification")) || [];
 
     // Get today's date
     const today = new Date().toISOString().slice(0, 19);
 
-    // Remove dates from existingNotification that are less than today
+    // Remove dates from existingNotification that are no longer valid
     notification = notification.filter(
       (element) => new Date(element) >= new Date(today)
     );
 
-    if (n === 0 && notification.includes(dateTime)) return;
-    if (n === 1) {
+    if (addNotification && notification.includes(dateTime)) return;
+    if (!addNotification) {
       notification = notification.filter((element) => element !== dateTime);
     } else {
       if (!notification.includes(dateTime)) {
@@ -72,11 +72,11 @@ const ContestDetailsContainer = (props) => {
   const updateRemind = () => {
     if (remindImg === remindOff) {
       setRemindImg(remindOn);
-      remindBeforeFiveMinutes(0); // 0 --> add notification
+      remindBeforeFiveMinutes(true); // add notification
       return;
     }
     setRemindImg(remindOff);
-    remindBeforeFiveMinutes(1); // 1 --> remove notification
+    remindBeforeFiveMinutes(false); // remove notification
   };
 
   // link for google calender with event date

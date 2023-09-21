@@ -10,7 +10,7 @@ import {
   formatStartTime,
   formatEndTime,
   calendarDateTime,
-} from "../shared/utils.js";
+} from "../shared/dateTimeUtility.js";
 
 const ContestDetails = (props) => {
   const { error, isLoaded, items } = props;

@@ -6,6 +6,7 @@ import {
   filterContestsWithin24Hours,
   filterUpcomingContests,
 } from "../shared/contestFilters";
+import InformationBanner from "../components/InformationBanner";
 
 const Home = () => {
   const [items, setItems] = useState([]);
@@ -18,25 +19,26 @@ const Home = () => {
   const [activeButton, setActiveButton] = useState(null);
 
   let selectedSites = JSON.parse(localStorage.getItem("selected_sites"));
-
   useEffect(() => {
     const currentDate = new Date();
+
     fetch("https://kontests.net/api/v1/all")
       .then((res) => res.json())
       .then(
         (result) => {
           setLoaded(true);
-          // sorted by duration less to more
+          // sorted by short duration to increasing
           result.sort(
             (a, b) => parseFloat(a.duration) - parseFloat(b.duration)
           );
 
           // filter out expired/ invalid contests
           result = result.filter((item) => {
-            const endTime = new Date(item.end_time);
-            return endTime > currentDate;
+            if (item) {
+              const endTime = new Date(item.end_time);
+              return endTime > currentDate && item !== null;
+            }
           });
-
           setItems(result);
           setFilter(result);
         },
@@ -49,7 +51,7 @@ const Home = () => {
 
   const filterContests = (filterFn, headingText, buttonId) => {
     setActiveButton(buttonId);
-    const filteredList = filterFn(items, selectedSites); // Use the provided filter function
+    const filteredList = filterFn(items, selectedSites);
     setHeading(headingText);
     setFilter(filteredList);
   };
@@ -96,6 +98,7 @@ const Home = () => {
       <div className="main">
         <div className="container">
           <h2 className="center">{heading}</h2>
+          <InformationBanner />
           <div className="app-container">
             <ContestDetails error={error} isLoaded={isLoaded} items={filter} />
           </div>

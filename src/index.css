@@ -395,6 +395,71 @@ h2 {
   height: 350px;
 }
 
+.banner {
+  position: relative;
+  border: 1px solid #e9e945;
+  color: #fff;
+  box-shadow: 0px 5px 9px #1d1d1d;
+  padding: 15px;
+  margin: 15px;
+  opacity: 0;
+  animation: fade-in 1s ease-in forwards;
+}
+
+.banner p {
+  font-size: larger;
+}
+
+.banner p span {
+  padding-right: 4px;
+  margin-right: 5px;
+  color: #e9e945;
+  font-weight: bold;
+}
+
+.closebtn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 20px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.closebtn:hover {
+  color: red;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transition: ease-in;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transition: ease-in;
+    transform: translateY(0);
+  }
+}
+
+.close-animation {
+  animation: fade-out 1s ease-out forwards;
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+    transition: ease-out;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transition: ease-out;
+    transform: translateY(-20px);
+  }
+}
+
 footer {
   display: flex;
   background: #202124;

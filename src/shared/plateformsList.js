@@ -1,31 +1,31 @@
 const plateforms = [
   {
     url: "https://codeforces.com/",
-    name: "CodeForces",
+    name: "codeforces",
   },
   {
     url: "https://www.codechef.com/",
-    name: "CodeChef",
+    name: "codechef",
   },
   {
     url: "https://www.hackerrank.com/",
-    name: "HackerRank",
+    name: "hackerrank",
   },
   {
     url: "https://www.hackerearth.com/",
-    name: "HackerEarth",
+    name: "hackerearth",
   },
   {
     url: "https://www.leetcode.com/",
-    name: "LeetCode",
+    name: "leetcode",
   },
   {
     url: "https://atcoder.jp/",
-    name: "AtCoder",
+    name: "atcoder",
   },
   {
     url: "https://www.topcoder.com/",
-    name: "Topcoder",
+    name: "topcoder",
   },
 ];
 

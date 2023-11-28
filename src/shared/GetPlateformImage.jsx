@@ -10,25 +10,25 @@ import unknown from "../assets/platform-logos/unknown_plateform.png";
 const GetPlateformImage = function (site) {
   var uri = "";
   switch (site) {
-    case "CodeChef":
+    case "codechef":
       uri = CodeChef;
       break;
-    case "CodeForces":
+    case "codeforces":
       uri = CodeForces;
       break;
-    case "LeetCode":
+    case "leetcode":
       uri = LeetCode;
       break;
-    case "AtCoder":
+    case "atcoder":
       uri = AtCoder;
       break;
-    case "HackerRank":
+    case "hackerrank":
       uri = HackerRank;
       break;
-    case "HackerEarth":
+    case "hackerearth":
       uri = HackerEarth;
       break;
-    case "Topcoder":
+    case "topcoder":
       uri = Topcoder;
       break;
     default:

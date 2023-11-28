@@ -1,12 +1,12 @@
 function initializePlateforms() {
   const plateforms = [
-    "CodeForces",
-    "CodeChef",
-    "HackerRank",
-    "HackerEarth",
-    "LeetCode",
-    "AtCoder",
-    "Topcoder",
+    "codeforces",
+    "codechef",
+    "hackerrank",
+    "hackerearth",
+    "leetcode",
+    "atcoder",
+    "topcoder",
   ];
 
   // adding each site in localhost storage with value true

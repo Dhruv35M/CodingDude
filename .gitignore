@@ -25,3 +25,5 @@ dist-ssr
 
 # vite addtional config files
 *.mjs
+
+.env

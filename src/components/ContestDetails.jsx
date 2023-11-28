@@ -1,6 +1,5 @@
 import Loading from "../shared/Loading";
 import ContestDetailsContainer from "./ContestDetailsContainer";
-// import cat from "../assets/cat.jpg";
 import funnyNotFound from "../assets/funnykid.jpg";
 
 import {
@@ -44,7 +43,7 @@ const ContestDetails = (props) => {
         ) : (
           items.map((item) => (
             <ContestDetailsContainer
-              key={`${item.url}${item.name}`}
+              key={`${item.id}`}
               cName={item.name}
               cSite={item.site}
               cUrl={item.url}

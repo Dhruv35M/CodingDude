@@ -5,6 +5,8 @@ import HackerEarth from "../assets/platform-logos/hackerearth.png";
 import LeetCode from "../assets/platform-logos/leetcode.png";
 import AtCoder from "../assets/platform-logos/atcoder.png";
 import Topcoder from "../assets/platform-logos/topcoder.png";
+import CodingNinjas from "../assets/platform-logos/codingninjas.jpg";
+import GeeksforGeeks from "../assets/platform-logos/geeksforgeeks.jpg";
 import unknown from "../assets/platform-logos/unknown_plateform.png";
 
 const GetPlateformImage = function (site) {
@@ -27,6 +29,12 @@ const GetPlateformImage = function (site) {
       break;
     case "hackerearth":
       uri = HackerEarth;
+      break;
+    case "codingninjas":
+      uri = CodingNinjas;
+      break;
+    case "geeksforgeeks":
+      uri = GeeksforGeeks;
       break;
     case "topcoder":
       uri = Topcoder;

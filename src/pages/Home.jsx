@@ -24,30 +24,34 @@ const Home = () => {
 
     fetch("https://kontests.net/api/v1/all")
       .then((res) => res.json())
-      .then(
-        (result) => {
-          setLoaded(true);
-          // sorted by short duration to increasing
-          result.sort(
-            (a, b) => parseFloat(a.duration) - parseFloat(b.duration)
-          );
+      .then((result) => {
+        setLoaded(true);
+        // sorted by short duration to increasing
+        result.sort((a, b) => parseFloat(a.duration) - parseFloat(b.duration));
 
-          // filter out expired/ invalid contests
-          result = result.filter((item) => {
-            if (item) {
-              const endTime = new Date(item.end_time);
-              return endTime > currentDate && item !== null;
-            }
-          });
-          setItems(result);
-          const filtered = filterBySelectedSites(result, selectedSites);
-          setFilter(filtered);
-        },
-        (error) => {
-          setLoaded(true);
-          setError(error);
-        }
-      );
+        // filter out expired/ invalid contests
+        const validContests = result.filter((item) => {
+          if (item) {
+            const endTime = new Date(item.end_time);
+            return endTime > currentDate && item !== null;
+          }
+        });
+
+        setItems(validContests);
+        const filtered = filterBySelectedSites(validContests, selectedSites);
+
+        // all contests button by default
+        filterContests(
+          filterBySelectedSites,
+          "Contests on Selected Platforms",
+          1
+        );
+        setFilter(filtered);
+      })
+      .catch((error) => {
+        setLoaded(true);
+        setError(error);
+      });
   }, []);
 
   const filterContests = (filterFn, headingText, buttonId) => {

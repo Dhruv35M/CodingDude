@@ -27,6 +27,14 @@ const plateforms = [
     url: "https://www.topcoder.com/",
     name: "topcoder",
   },
+  {
+    url: "https://www.codingninjas.com/",
+    name: "codingninjas",
+  },
+  {
+    url: "https://www.geeksforgeeks.org/",
+    name: "geeksforgeeks",
+  },
 ];
 
 export default plateforms;

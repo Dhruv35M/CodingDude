@@ -7,6 +7,8 @@ function initializePlateforms() {
     "leetcode",
     "atcoder",
     "topcoder",
+    "geeksforgeeks",
+    "codingninjas",
   ];
 
   // adding each site in localhost storage with value true

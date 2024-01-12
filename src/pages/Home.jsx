@@ -12,7 +12,7 @@ const Home = () => {
   const [items, setItems] = useState([]);
   const [isLoaded, setLoaded] = useState(false);
   const [error, setError] = useState(false);
-  const [heading, setHeading] = useState("All Contests");
+  const [heading, setHeading] = useState("Contests on Selected Platforms");
   const [filter, setFilter] = useState([]);
 
   // Handling menu button active and non-active
@@ -40,7 +40,8 @@ const Home = () => {
             }
           });
           setItems(result);
-          setFilter(result);
+          const filtered = filterBySelectedSites(result, selectedSites);
+          setFilter(filtered);
         },
         (error) => {
           setLoaded(true);
@@ -62,14 +63,20 @@ const Home = () => {
         <button
           className={activeButton === 1 ? "btn menu-btn-active" : "btn "}
           onClick={() =>
-            filterContests(filterBySelectedSites, "My Contests", 1)
+            filterContests(
+              filterBySelectedSites,
+              "Contests on Selected Platforms",
+              1
+            )
           }
         >
-          My Contests
+          All Contests
         </button>
         <button
           className={activeButton === 2 ? "btn menu-btn-active" : "btn "}
-          onClick={() => filterContests(filterLiveContests, "Live Contests", 2)}
+          onClick={() =>
+            filterContests(filterLiveContests, "Ongoing Contests", 2)
+          }
         >
           <span className="live btn-5">Live</span> Contest
         </button>

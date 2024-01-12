@@ -2,7 +2,7 @@
   "short_name": "CodingDude",
   "name": "CodingDude - Contest Reminder",
   "description": "Dominate coding challenges with CodingDude: Live, upcoming & 24-hour contests. Elevate skills and excel in programming!",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "icons": {
     "16": "icons/icon16.png",
     "32": "icons/icon32.png",

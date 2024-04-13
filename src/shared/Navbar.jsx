@@ -21,7 +21,7 @@ const Navbar = () => {
         </NavLink>
 
         <div className="motivation text-focus-in">
-          <h3> New Year, set your aim, </h3>
+          <h3> Hey Dude, set your aim, </h3>
           <h3> Compete now, elevate the game! </h3>
           {/* <h3> Don't Procrastinate, </h3>
           <h3> Compete now and Elevate! </h3> */}

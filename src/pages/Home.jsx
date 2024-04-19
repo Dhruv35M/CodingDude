@@ -33,8 +33,9 @@ const Home = () => {
         const validContests = result.filter((item) => {
           if (item) {
             const endTime = new Date(item.end_time);
-            return endTime > currentDate && item !== null;
+            return endTime > currentDate;
           }
+          return false;
         });
 
         setItems(validContests);
@@ -49,6 +50,7 @@ const Home = () => {
         setFilter(filtered);
       })
       .catch((error) => {
+        console.error("error in feteching data ", error);
         setLoaded(true);
         setError(error);
       });

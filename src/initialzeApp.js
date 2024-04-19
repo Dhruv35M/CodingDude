@@ -21,5 +21,5 @@ function initializePlateforms() {
 
 export default function initializeApp() {
   let selectedSites = JSON.parse(localStorage.getItem("selected_sites"));
-  selectedSites === null && initializePlateforms();
+  selectedSites ?? initializePlateforms();
 }

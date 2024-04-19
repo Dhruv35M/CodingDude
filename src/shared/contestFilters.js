@@ -1,5 +1,11 @@
 export function filterBySelectedSites(contests, selectedSites) {
-  return contests.filter((contest) => selectedSites[contest.site] === true);
+  return contests.filter((contest) => {
+    return (
+      contest ??
+      selectedSites[contest.site] ??
+      selectedSites[contest.site] === true
+    );
+  });
 }
 
 // filtering max contest duration is 2 months (sec)

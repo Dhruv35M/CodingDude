@@ -3,14 +3,11 @@ import Navbar from "./shared/Navbar";
 import Settings from "./pages/Settings";
 import "./index.css";
 import { Route, Routes } from "react-router-dom";
-import { useEffect } from "react";
 import appInit from "./initialzeApp";
 import NoInternetConnection from "./shared/NoInternetConnection";
 
 function App() {
-  useEffect(() => {
-    appInit();
-  }, []);
+  appInit();
 
   return (
     <>

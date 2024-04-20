@@ -1,20 +1,14 @@
 export function filterBySelectedSites(contests, selectedSites) {
-  return contests.filter((contest) => {
-    return (
-      contest ??
-      selectedSites[contest.site] ??
-      selectedSites[contest.site] === true
-    );
-  });
+  return contests.filter((contest) => selectedSites[contest.site] === true);
 }
 
-// filtering max contest duration is 2 months (sec)
+const twoMonthsInSeconds = 5260000;
 export function filterLiveContests(contests, selectedSites) {
   return contests.filter(
     (contest) =>
       selectedSites[contest.site] === true &&
       contest.status === "CODING" &&
-      parseInt(contest.duration) <= 5260000
+      parseInt(contest.duration) <= twoMonthsInSeconds
   );
 }
 

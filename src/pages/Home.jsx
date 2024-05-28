@@ -107,7 +107,7 @@ const Home = () => {
           Upcomings
         </button>
       </div>
-
+      {console.log({ items })}
       <div className="main">
         <div className="container">
           <h2 className="center">{heading}</h2>

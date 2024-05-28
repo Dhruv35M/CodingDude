@@ -4,6 +4,7 @@ import remindOff from "../assets/remindme-off.png";
 import remindOn from "../assets/remindme-on.png";
 import calender from "../assets/calender.png";
 import { FormatedDateForNotification } from "../shared/dateTimeUtility.js";
+import TimeLeftToStartContest from "./TimeLeftToStartContest.jsx";
 
 const ContestDetailsContainer = (props) => {
   const {
@@ -15,6 +16,7 @@ const ContestDetailsContainer = (props) => {
     eTime,
     sDate,
     eDate,
+    timer,
     calStartTime,
     calEndTime,
     showNotification,
@@ -94,6 +96,7 @@ const ContestDetailsContainer = (props) => {
     setCalUrl(result.replace(/#/g, "%23"));
   };
 
+  const formattedDate = new Date(timer);
   return (
     <>
       <div className="contest-container flex-col">
@@ -157,6 +160,7 @@ const ContestDetailsContainer = (props) => {
             </div>
           </div>
         </div>
+        <TimeLeftToStartContest contestTime={formattedDate} />
       </div>
     </>
   );

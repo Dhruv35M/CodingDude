@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Poetsen+One&display=swap");
 
 * {
   margin: 0;
@@ -104,8 +105,10 @@ nav {
 }
 
 .contest-container {
-  height: 100px;
+  height: 125px;
   margin: 10px;
+  padding-top: 5px;
+  padding-bottom: 3px;
   /* background-color: rgb(23, 24, 26); */
   /* background-color: #333435; */
   /* background-color: #292f33; */
@@ -124,6 +127,19 @@ nav {
   /* background-color: #203641; */
   background-color: #2c2c2c;
   transition: background-color 0.5s ease;
+}
+
+.timer {
+  background: #02050852;
+  width: 99%;
+  margin-top: 6px;
+  font-weight: 500;
+  display: flex;
+  border-radius: 8px;
+  justify-content: center;
+  height: 31px;
+  align-items: center;
+  font-size: 14px;
 }
 
 h2 {
@@ -206,14 +222,15 @@ h2 {
   flex-direction: column;
   margin: auto;
   text-align: center;
-  font-weight: 300;
-  font-family: Cherry Bomb One, cursive;
+  font-family: "Poetsen One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
   /* color: #fff; */
   color: #d5d3e4;
   font-size: 20px;
-  -webkit-text-stroke-width: 0.7px;
+  /* -webkit-text-stroke-width: 0.7px; */
   /* -webkit-text-stroke-color: #000000; */
-  -webkit-text-stroke-color: #120a41;
+  /* -webkit-text-stroke-color: #120a41; */
 }
 
 .menu {

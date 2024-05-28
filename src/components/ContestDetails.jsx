@@ -52,6 +52,7 @@ const ContestDetails = (props) => {
               eTime={formatEndTime(item.end_time)}
               sDate={formatDateText(item.start_time)}
               eDate={formatDateText(item.end_time)}
+              timer={item.start_time}
               calStartTime={calendarDateTime(item.start_time)}
               calEndTime={calendarDateTime(item.end_time)}
               showNotification={isValidForNotification(item.start_time)}

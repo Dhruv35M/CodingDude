@@ -1,13 +1,13 @@
-import CodeForces from "../assets/platform-logos/codeforces.png";
-import CodeChef from "../assets/platform-logos/codechef.png";
-import HackerRank from "../assets/platform-logos/hackerrank.png";
-import HackerEarth from "../assets/platform-logos/hackerearth.png";
-import LeetCode from "../assets/platform-logos/leetcode.png";
-import AtCoder from "../assets/platform-logos/atcoder.png";
-import Topcoder from "../assets/platform-logos/topcoder.png";
-import CodingNinjas from "../assets/platform-logos/codingninjas.jpg";
-import GeeksforGeeks from "../assets/platform-logos/geeksforgeeks.jpg";
-import unknown from "../assets/platform-logos/unknown_plateform.png";
+import CodeForces from "../assets/platform-logos/codeforces.webp";
+import CodeChef from "../assets/platform-logos/codechef.webp";
+import HackerRank from "../assets/platform-logos/hackerrank.webp";
+import HackerEarth from "../assets/platform-logos/hackerearth.webp";
+import LeetCode from "../assets/platform-logos/leetcode.webp";
+import AtCoder from "../assets/platform-logos/atcoder.webp";
+import Topcoder from "../assets/platform-logos/topcoder.webp";
+import CodingNinjas from "../assets/platform-logos/codingninjas.webp";
+import GeeksforGeeks from "../assets/platform-logos/geeksforgeeks.webp";
+import unknown from "../assets/platform-logos/unknown_plateform.webp";
 
 const GetPlateformImage = function (site) {
   var uri = "";
@@ -41,8 +41,6 @@ const GetPlateformImage = function (site) {
       break;
     default:
       uri = unknown;
-
-    // Do nothing
   }
   return uri;
 };

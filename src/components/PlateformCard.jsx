@@ -22,6 +22,7 @@ function PlateformCard({ name, url, imgUrl, isChecked, toggleCheckBox }) {
             src={imgUrl}
             alt="contest-image"
             draggable={false}
+            loading="lazy"
             className="plateform-logo"
           />
           <h3 className="plateform-name">{name}</h3>

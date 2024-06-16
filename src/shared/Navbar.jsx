@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
-import home from "../assets/home.png";
-import settings from "../assets/settings.png";
+import home from "../assets/home.webp";
+import settings from "../assets/settings.webp";
 
 const Navbar = () => {
   // background: isActive ? "#5c71b2" : "",
@@ -16,7 +16,7 @@ const Navbar = () => {
           })}
         >
           <div className="navbar-right">
-            <img className="navbar-img" src={home} />
+            <img className="navbar-img" loading="lazy" src={home} />
           </div>
         </NavLink>
 
@@ -38,7 +38,7 @@ const Navbar = () => {
           })}
         >
           <div className="navbar-left">
-            <img className="navbar-img" src={settings} />
+            <img className="navbar-img" loading="lazy" src={settings} />
           </div>
         </NavLink>
       </nav>

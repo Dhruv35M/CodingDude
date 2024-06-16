@@ -111,7 +111,7 @@ const Home = () => {
       <div className="main">
         <div className="container">
           <h2 className="center">{heading}</h2>
-          <InformationBanner />
+          {/* <InformationBanner /> */}
           <div className="app-container">
             <ContestDetails error={error} isLoaded={isLoaded} items={filter} />
           </div>

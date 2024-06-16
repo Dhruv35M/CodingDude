@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import getImage from "../shared/GetPlateformImage";
-import remindOff from "../assets/remindme-off.png";
-import remindOn from "../assets/remindme-on.png";
-import calender from "../assets/calender.png";
+import remindOff from "../assets/remindme-off.webp";
+import remindOn from "../assets/remindme-on.webp";
+import calender from "../assets/calender.webp";
 import { FormatedDateForNotification } from "../shared/dateTimeUtility.js";
 import TimeLeftToStartContest from "./TimeLeftToStartContest.jsx";
 
@@ -105,6 +105,7 @@ const ContestDetailsContainer = (props) => {
             src={getImage(cSite)}
             alt="contest-image"
             className="contest-logo"
+            loading="lazy"
           />
           <a
             href={cUrl}
@@ -123,6 +124,7 @@ const ContestDetailsContainer = (props) => {
                 className="remind-me"
                 src={remindImg}
                 onClick={updateRemind}
+                loading="lazy"
                 title="Notify me 5 minutes before Contest Start"
                 alt="notify me"
               />
@@ -137,6 +139,7 @@ const ContestDetailsContainer = (props) => {
               <img
                 className="remind-me"
                 src={calender}
+                loading="lazy"
                 title="Add to google calender"
                 alt="google calender"
                 onClick={addToGoogleCalender}

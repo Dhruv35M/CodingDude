@@ -1,6 +1,6 @@
 import Loading from "../shared/Loading";
 import ContestDetailsContainer from "./ContestDetailsContainer";
-import funnyNotFound from "../assets/funnykid.jpg";
+import funnyNotFound from "../assets/funnykid.webp";
 
 import {
   contestDuration,
@@ -36,6 +36,7 @@ const ContestDetails = (props) => {
               src={funnyNotFound}
               className="contest-not-found"
               draggable={false}
+              loading="lazy"
               alt="not found"
             />
             <h2 className="center">No Contest Available!</h2>

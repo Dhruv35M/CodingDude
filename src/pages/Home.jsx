@@ -22,7 +22,7 @@ const Home = () => {
   useEffect(() => {
     const currentDate = new Date();
 
-    fetch("https://kontests.net/api/v1/all")
+    fetch("https://contests.net/api/v1/all")
       .then((res) => res.json())
       .then((result) => {
         setLoaded(true);

@@ -105,6 +105,7 @@ const ContestDetailsContainer = (props) => {
             src={getImage(cSite)}
             alt="contest-image"
             className="contest-logo"
+            draggable={false}
             loading="lazy"
           />
           <a
@@ -125,6 +126,7 @@ const ContestDetailsContainer = (props) => {
                 src={remindImg}
                 onClick={updateRemind}
                 loading="lazy"
+                draggable={false}
                 title="Notify me 5 minutes before Contest Start"
                 alt="notify me"
               />
@@ -140,6 +142,7 @@ const ContestDetailsContainer = (props) => {
                 className="remind-me"
                 src={calender}
                 loading="lazy"
+                draggable={false}
                 title="Add to google calender"
                 alt="google calender"
                 onClick={addToGoogleCalender}

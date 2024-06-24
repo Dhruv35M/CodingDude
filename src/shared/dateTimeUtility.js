@@ -1,3 +1,5 @@
+const countryCode = localStorage.getItem("country") || "IN";
+
 export function contestDuration(duration) {
   if (duration === "-") return "-";
 
@@ -59,9 +61,10 @@ export function formatDateText(s) {
   let date = new Date(s).toString();
   let day = date.toString().slice(0, 3).toUpperCase();
   let browserLang = window.navigator.userLanguage || window.navigator.language;
-  date = new Date(date).toLocaleDateString(browserLang);
+  date = new Date(date).toLocaleDateString(countryCode);
   return { date: date, day: day };
 }
+
 
 export function calendarDateTime(time) {
   // date calculation

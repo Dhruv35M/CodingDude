@@ -17,6 +17,9 @@ function initializePlateforms() {
   }, []);
 
   localStorage.setItem("selected_sites", JSON.stringify(obj));
+  
+  const country = userLocaleDateFormat();
+  localStorage.setItem("country", country);
 }
 
 export default function initializeApp() {

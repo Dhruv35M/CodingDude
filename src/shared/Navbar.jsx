@@ -16,7 +16,7 @@ const Navbar = () => {
           })}
         >
           <div className="navbar-right">
-            <img className="navbar-img" loading="lazy" src={home} />
+            <img className="navbar-img" draggable="false" loading="lazy" src={home} />
           </div>
         </NavLink>
 
@@ -38,7 +38,7 @@ const Navbar = () => {
           })}
         >
           <div className="navbar-left">
-            <img className="navbar-img" loading="lazy" src={settings} />
+            <img className="navbar-img" draggable="false" loading="lazy" src={settings} />
           </div>
         </NavLink>
       </nav>

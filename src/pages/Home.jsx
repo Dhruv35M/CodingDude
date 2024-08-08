@@ -7,6 +7,7 @@ import {
   filterUpcomingContests,
 } from "../shared/contestFilters";
 import InformationBanner from "../components/InformationBanner";
+import { has24HoursPassed } from "../shared/dateTimeUtility";
 
 const Home = () => {
   const [items, setItems] = useState([]);
@@ -19,41 +20,65 @@ const Home = () => {
   const [activeButton, setActiveButton] = useState(null);
 
   let selectedSites = JSON.parse(localStorage.getItem("selected_sites"));
+  let contestChache = JSON.parse(localStorage.getItem("contestChache")) ?? null;
+  let lastApiCall =
+    JSON.parse(localStorage.getItem("time")) ?? new Date().toISOString();
+
   useEffect(() => {
     const currentDate = new Date();
 
-    fetch("https://contests.net/api/v1/all")
-      .then((res) => res.json())
-      .then((result) => {
-        setLoaded(true);
-        // sorted by short duration to increasing
-        result.sort((a, b) => parseFloat(a.duration) - parseFloat(b.duration));
+    if (contestChache !== null) {
+      if (has24HoursPassed(lastApiCall)) {
+        localStorage.setItem("contestChache", "null");
+        localStorage.setItem("time", "null");
+        return;
+      }
 
-        // filter out expired/ invalid contests
-        const validContests = result.filter((item) => {
-          if (item) {
-            const endTime = new Date(item.end_time);
-            return endTime > currentDate;
-          }
-          return false;
+      setLoaded(false);
+      setItems(contestChache);
+      const filtered = filterBySelectedSites(contestChache, selectedSites);
+
+      setFilter(filtered);
+      setLoaded(true);
+    } else {
+      fetch("https://contests.net/api/v1/all")
+        .then((res) => res.json())
+        .then((result) => {
+          setLoaded(true);
+          // sorted by short duration to increasing
+          result.sort(
+            (a, b) => parseFloat(a.duration) - parseFloat(b.duration)
+          );
+
+          // filter out expired/ invalid contests
+          const validContests = result.filter((item) => {
+            if (item) {
+              const endTime = new Date(item.end_time);
+              return endTime > currentDate;
+            }
+            return false;
+          });
+
+          setItems(validContests);
+          const filtered = filterBySelectedSites(validContests, selectedSites);
+
+          // all contests button by default
+          localStorage.setItem("contestChache", JSON.stringify(validContests));
+          localStorage.setItem("time", JSON.stringify(lastApiCall));
+
+          filterContests(
+            filterBySelectedSites,
+            "Contests on Selected Platforms",
+            1
+          );
+          setFilter(filtered);
+        })
+        .catch((error) => {
+          console.error("error in feteching data ", error);
+          setLoaded(true);
+          setError(error);
         });
-
-        setItems(validContests);
-        const filtered = filterBySelectedSites(validContests, selectedSites);
-
-        // all contests button by default
-        filterContests(
-          filterBySelectedSites,
-          "Contests on Selected Platforms",
-          1
-        );
-        setFilter(filtered);
-      })
-      .catch((error) => {
-        console.error("error in feteching data ", error);
-        setLoaded(true);
-        setError(error);
-      });
+    }
   }, []);
 
   const filterContests = (filterFn, headingText, buttonId) => {
@@ -107,10 +132,11 @@ const Home = () => {
           Upcomings
         </button>
       </div>
-      {console.log({ items })}
+      {/* {console.log({ items })} */}
       <div className="main">
         <div className="container">
           <h2 className="center">{heading}</h2>
+          <InformationBanner />
           {/* <InformationBanner /> */}
           <div className="app-container">
             <ContestDetails error={error} isLoaded={isLoaded} items={filter} />

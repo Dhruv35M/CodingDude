@@ -6,6 +6,8 @@ const link =
 function InformationBanner() {
   const [showBanner, setShowBanner] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
+  const message = `Experience any issues? Reinstall after removing for a
+            smooth fix.`;
 
   useEffect(() => {
     const isBannerClosed = localStorage.getItem("bannerClosed");
@@ -37,8 +39,7 @@ function InformationBanner() {
           </span>
           <p>
             <span className="note">Upgrade Alert:</span>
-            Experience any issues? Reinstall after removing <br></br>for a
-            smooth fix.{" "}
+            {message}{" "}
             <a
               href={link}
               style={{ color: "#6eb4ed" }}

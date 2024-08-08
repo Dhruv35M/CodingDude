@@ -65,7 +65,6 @@ export function formatDateText(s) {
   return { date: date, day: day };
 }
 
-
 export function calendarDateTime(time) {
   // date calculation
   let utcDate = time; // ISO-8601 formatted date returned from server
@@ -116,4 +115,11 @@ export function FormatedDateForNotification(dateTimeString) {
     .toString()
     .padStart(2, "0")}:${date.getMinutes().toString().padStart(2, "0")}`;
   return formattedDate;
+}
+
+export function has24HoursPassed(lastDate) {
+  const currentDate = new Date();
+  const timeDifference = currentDate - new Date(lastDate);
+  const hoursPassed = timeDifference / (1000 * 60 * 60);
+  return hoursPassed >= 24;
 }

@@ -20,27 +20,19 @@ const Home = () => {
   const [activeButton, setActiveButton] = useState(null);
 
   let selectedSites = JSON.parse(localStorage.getItem("selected_sites"));
-  let contestChache = JSON.parse(localStorage.getItem("contestChache")) ?? null;
+  let contestChache =
+    JSON.parse(localStorage.getItem("contestChache")) ?? "null";
+  const notificationMessage =
+    localStorage.getItem("notification-message") ?? "null";
   let lastApiCall =
     JSON.parse(localStorage.getItem("time")) ?? new Date().toISOString();
 
   useEffect(() => {
+    setLoaded(false);
+
     const currentDate = new Date();
 
-    if (contestChache !== null) {
-      if (has24HoursPassed(lastApiCall)) {
-        localStorage.setItem("contestChache", "null");
-        localStorage.setItem("time", "null");
-        return;
-      }
-
-      setLoaded(false);
-      setItems(contestChache);
-      const filtered = filterBySelectedSites(contestChache, selectedSites);
-
-      setFilter(filtered);
-      setLoaded(true);
-    } else {
+    if (has24HoursPassed(lastApiCall) || contestChache === "null") {
       fetch("https://contests.net/api/v1/all")
         .then((res) => res.json())
         .then((result) => {
@@ -78,6 +70,27 @@ const Home = () => {
           setLoaded(true);
           setError(error);
         });
+
+      // notification
+      fetch("https://contests.net/api/v1/notification")
+        .then((res) => res.json())
+        .then((result) => {
+          if (notificationMessage !== result.message) {
+            localStorage.setItem("notification-message", result.message);
+            localStorage.setItem("bannerClosed", false);
+          }
+        })
+        .catch((error) => {
+          console.error("error in feteching notification ", error);
+          setLoaded(true);
+          setError(error);
+        });
+    } else {
+      setItems(contestChache);
+      const filtered = filterBySelectedSites(contestChache, selectedSites);
+
+      setFilter(filtered);
+      setLoaded(true);
     }
   }, []);
 
@@ -132,7 +145,7 @@ const Home = () => {
           Upcomings
         </button>
       </div>
-      {/* {console.log({ items })} */}
+
       <div className="main">
         <div className="container">
           <h2 className="center">{heading}</h2>

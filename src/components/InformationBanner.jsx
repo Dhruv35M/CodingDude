@@ -6,26 +6,24 @@ const link =
 function InformationBanner() {
   const [showBanner, setShowBanner] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
-  const message = `Experience any issues? Reinstall after removing for a
-            smooth fix.`;
+  const notificationMessage =
+    localStorage.getItem("notification-message") ?? "null";
+  const isBannerClosed = localStorage.getItem("bannerClosed");
 
   useEffect(() => {
-    const isBannerClosed = localStorage.getItem("bannerClosed");
-    if (!isBannerClosed || isBannerClosed !== "true") {
+    if (isBannerClosed !== "true") {
       const timer = setTimeout(() => {
         setShowBanner(true);
       }, 500);
 
       return () => clearTimeout(timer);
-    } else {
-      setShowBanner(false);
     }
   }, []);
 
   const closeBanner = () => {
     setIsClosing(true);
     setTimeout(() => {
-      localStorage.setItem("bannerClosed", "true");
+      localStorage.setItem("bannerClosed", true);
       setShowBanner(false);
     }, 500);
   };
@@ -38,17 +36,20 @@ function InformationBanner() {
             &times;
           </span>
           <p>
-            <span className="note">Upgrade Alert:</span>
-            {message}{" "}
+            <span className="note">Update:</span>
+            {notificationMessage}{" "}
+          </p>
+          <p>
+            Extension link:
             <a
               href={link}
-              style={{ color: "#6eb4ed" }}
+              style={{ color: "#6eb4ed", paddingLeft: "8px" }}
               target="_blank"
               title="go to Webstore"
               className="link"
               rel="noopener noreferrer"
             >
-              link
+              CodingDude
             </a>
           </p>
         </div>

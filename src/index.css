@@ -41,7 +41,15 @@ body::-webkit-scrollbar {
   /* background: rgb(2, 0, 36); */
   /* background: linear-gradient(90deg, rgb(176 173 255) 0%, rgba(0,212,255,1) 100%, rgba(9,12,123,1) 36%, rgba(0,212,255,1) 100%); */
   /* background: linear-gradient(90deg, #928efb, #05a2c2 100%, #040658 0, #025c6f); */
-  background: #1259a373;
+  /* background: #1259a373; */
+  background: linear-gradient(
+    12deg,
+    #283493ae,
+    #3e4cb48e,
+    #1b2eda58,
+    #1b96da7d,
+    #1b97daa4
+  );
   backdrop-filter: blur(5px);
   border-radius: 0 0 50px 50px;
   padding: 12px;
@@ -174,12 +182,14 @@ h2 {
 }
 
 .contest-heading {
+  display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  display: -webkit-box;
+  line-clamp: 2;
   max-width: 170px;
-  overflow: hidden;
   min-width: 164px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .contest--start-end {

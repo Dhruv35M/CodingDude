@@ -1,4 +1,6 @@
-function initializePlateforms() {
+import userLocaleDateFormat from "../src/shared/userLocaleDateFormat";
+
+async function initializePlateforms() {
   const plateforms = [
     "codeforces",
     "codechef",
@@ -17,9 +19,9 @@ function initializePlateforms() {
   }, []);
 
   localStorage.setItem("selected_sites", JSON.stringify(obj));
-  
-  const country = userLocaleDateFormat();
+  const country = await userLocaleDateFormat();
   localStorage.setItem("country", country);
+  localStorage.setItem("bannerClosed", true);
 }
 
 export default function initializeApp() {

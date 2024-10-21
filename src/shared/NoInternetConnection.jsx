@@ -29,7 +29,7 @@ const NoInternetConnection = (props) => {
           draggable={false}
           alt="no internet"
         />
-        <h3 className="">No Interner Connection</h3>
+        <h3 className="">No Internet Connection</h3>
         <p> Please try again later.</p>
       </div>
     );

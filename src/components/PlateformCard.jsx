@@ -1,14 +1,4 @@
-import { useState } from "react";
-
 function PlateformCard({ name, url, imgUrl, isChecked, toggleCheckBox }) {
-  const [checked, setChecked] = useState(isChecked);
-
-  const togglePlateforms = () => {
-    const updatedCheckbox = !checked;
-    setChecked(updatedCheckbox);
-    toggleCheckBox(name, updatedCheckbox);
-  };
-
   return (
     <div className="plateform-container">
       <div className="contest-logo-heading" title="go to website">
@@ -29,14 +19,20 @@ function PlateformCard({ name, url, imgUrl, isChecked, toggleCheckBox }) {
         </a>
       </div>
 
-      <div className="plateform-checkbox">
+      <div className="checkbox-wrapper-8">
         <input
           type="checkbox"
-          className="checkbox"
-          value={checked}
-          checked={checked}
-          onChange={togglePlateforms}
+          className="tgl tgl-skewed"
+          id={name}
+          checked={isChecked}
+          onChange={() => toggleCheckBox(name)}
         />
+        <label
+          className="tgl-btn"
+          data-tg-off="OFF"
+          data-tg-on="ON"
+          htmlFor={name}
+        ></label>
       </div>
     </div>
   );

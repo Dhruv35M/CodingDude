@@ -3,20 +3,26 @@ import home from "../assets/home.webp";
 import settings from "../assets/settings.webp";
 
 const Navbar = () => {
-  // background: isActive ? "#5c71b2" : "",
   return (
     <div className="navbar">
       <nav>
         <NavLink
           to="/"
-          className="navbar-links"
           style={({ isActive }) => ({
-            borderBottom: isActive ? "2px solid skyblue" : "",
-            borderRadius: "3px 20px",
+            padding: "",
+            filter: "invert(0.8)",
+            ...(isActive && {
+              filter: "invert(1)",
+            }),
           })}
         >
           <div className="navbar-right">
-            <img className="navbar-img" draggable="false" loading="lazy" src={home} />
+            <img
+              className="navbar-img"
+              draggable="false"
+              loading="lazy"
+              src={home}
+            />
           </div>
         </NavLink>
 
@@ -31,20 +37,28 @@ const Navbar = () => {
 
         <NavLink
           to="/settings"
-          className="navbar-links"
           style={({ isActive }) => ({
-            borderBottom: isActive ? "2px solid skyblue" : "",
-            borderRadius: "20px 3px",
+            padding: "",
+            filter: "invert(0.8)",
+            ...(isActive && {
+              filter: "invert(1)",
+            }),
           })}
         >
           <div className="navbar-left">
-            <img className="navbar-img" draggable="false" loading="lazy" src={settings} />
+            <img
+              className="navbar-img"
+              draggable="false"
+              loading="lazy"
+              src={settings}
+            />
           </div>
         </NavLink>
       </nav>
     </div>
   );
-  // background: isActive ? "#0c7a96" : "",
 };
 
 export default Navbar;
+
+// background: isActive ? "#0c7a96" : "",

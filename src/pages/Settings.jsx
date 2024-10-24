@@ -16,6 +16,7 @@ const Settings = () => {
 
   // Update state when localStorage changes
   useEffect(() => {
+    scrollToTop();
     const handleStorageChange = () => {
       const storedSites = localStorage.getItem("selected_sites");
       if (storedSites) {
@@ -27,28 +28,31 @@ const Settings = () => {
     return () => window.removeEventListener("storage", handleStorageChange);
   }, []);
 
+  const updateLocalStorage = (sites) => {
+    localStorage.setItem("selected_sites", JSON.stringify(sites));
+    setSelectedSites(sites);
+  };
+
   const toggleCheckBox = (name) => {
-    setSelectedSites((prevSelectedSites) => {
-      const updatedSites = {
-        ...prevSelectedSites,
-        [name]: !prevSelectedSites[name],
-      };
-      localStorage.setItem("selected_sites", JSON.stringify(updatedSites));
-      return updatedSites;
-    });
+    const updatedSites = { ...selectedSites, [name]: !selectedSites[name] };
+    updateLocalStorage(updatedSites);
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const resetApp = () => {
     localStorage.clear();
     appInit();
-    const allSelectedSites = plateforms.reduce((accumulator, { name }) => {
-      accumulator[name] = true;
-      return accumulator;
+    const allSelectedSites = plateforms.reduce((acc, { name }) => {
+      acc[name] = true;
+      return acc;
     }, {});
 
-    localStorage.setItem("selected_sites", JSON.stringify(allSelectedSites));
-    setSelectedSites(allSelectedSites);
+    updateLocalStorage(allSelectedSites);
     setShowBanner(true);
+    scrollToTop();
   };
 
   const deselectAll = () => {
@@ -57,8 +61,7 @@ const Settings = () => {
       return accumulator;
     }, {});
 
-    localStorage.setItem("selected_sites", JSON.stringify(allDeselectedSites));
-    setSelectedSites(allDeselectedSites);
+    updateLocalStorage(allDeselectedSites);
   };
 
   useEffect(() => {
@@ -80,11 +83,7 @@ const Settings = () => {
       </div>
       <div className="plateform-list">
         {showBanner && (
-          <InformationBanner
-            message={"Application has been reset"}
-            showNotification={true}
-            setShowNotification={setShowBanner}
-          />
+          <InformationBanner message={"Application has been reset"} />
         )}
         {plateforms.map((plateform) => (
           <PlateformCard

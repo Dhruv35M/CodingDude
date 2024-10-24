@@ -100,7 +100,7 @@ nav {
 
 .main {
   position: relative;
-  top: 140px;
+  top: 150px;
 }
 
 .center {
@@ -582,7 +582,7 @@ footer .rating button:hover {
 }
 
 .contest-not-found {
-  width: 70%;
+  width: 65%;
   /* background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)); */
   -webkit-mask-image: linear-gradient(to right, transparent 0%, black 100%);
   mask-image: linear-gradient(to top, transparent 0%, black 100%);
@@ -615,9 +615,10 @@ footer .rating button:hover {
   color: #c33333;
 }
 
-/* .app-container {
-  padding-bottom: 10px;
-} */
+.app-container {
+  /* padding-bottom: 10px; */
+  min-height: 48vh;
+}
 
 .btn {
   border: 0;

@@ -5,10 +5,13 @@ const Footer = () => {
     <footer>
       <div className="shortcut-key">
         <p>open extension</p>
-        <span>Ctrl+Shift+K</span>
+        <span>Ctrl + Shift + X</span>
       </div>
       <div className="rating">
-        <p>Do you like CodingDude?</p>
+        <p>
+          Your feedback makes a difference! <br /> Rate CodingDude and help us
+          serve you better!
+        </p>
         <button>
           <a
             href={ratingURL}

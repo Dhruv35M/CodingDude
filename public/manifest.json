@@ -21,9 +21,9 @@
   "commands": {
     "_execute_action": {
       "suggested_key": {
-        "default": "Ctrl+Shift+K",
-        "windows": "Ctrl+Shift+K",
-        "mac": "MacCtrl+Shift+K"
+        "default": "Ctrl+Shift+X",
+        "windows": "Ctrl+Shift+X",
+        "mac": "MacCtrl+Shift+X"
       },
       "description": "Toggle My Chrome Extension"
     }

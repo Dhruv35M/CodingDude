@@ -2,38 +2,39 @@ import { useState, useEffect } from "react";
 import noInternetImg from "../assets/no-internet.webp";
 
 const NoInternetConnection = (props) => {
-  // state variable holds the state of the internet connection
   const [isOnline, setOnline] = useState(true);
 
   useEffect(() => {
     setOnline(navigator.onLine);
+
+    const handleOnline = () => setOnline(true);
+    const handleOffline = () => setOnline(false);
+
+    window.addEventListener("online", handleOnline);
+    window.addEventListener("offline", handleOffline);
+
+    return () => {
+      window.removeEventListener("online", handleOnline);
+      window.removeEventListener("offline", handleOffline);
+    };
   }, []);
-
-  // event listeners to update the state
-  window.addEventListener("online", () => {
-    setOnline(true);
-  });
-
-  window.addEventListener("offline", () => {
-    setOnline(false);
-  });
 
   if (isOnline) {
     return props.children;
-  } else {
-    return (
-      <div className="no-internet-container">
-        <img
-          src={noInternetImg}
-          loading="lazy"
-          draggable={false}
-          alt="no internet"
-        />
-        <h3 className="">No Internet Connection</h3>
-        <p> Please try again later.</p>
-      </div>
-    );
   }
+
+  return (
+    <div className="no-internet-container">
+      <img
+        src={noInternetImg}
+        loading="lazy"
+        draggable={false}
+        alt="no internet"
+      />
+      <h3 className="">No Internet Connection</h3>
+      <p> Please try again later.</p>
+    </div>
+  );
 };
 
 export default NoInternetConnection;

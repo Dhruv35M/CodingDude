@@ -1,6 +1,8 @@
 import userLocaleDateFormat from "../src/shared/userLocaleDateFormat";
 
 async function initializePlateforms() {
+  localStorage.clear();
+
   const plateforms = [
     "codeforces",
     "codechef",

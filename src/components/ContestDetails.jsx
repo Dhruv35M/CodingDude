@@ -1,6 +1,6 @@
 import Loading from "../shared/Loading";
 import ContestDetailsContainer from "./ContestDetailsContainer";
-import funnyNotFound from "../assets/funnykid.webp";
+import funnyNotFound from "../assets/panda.webp";
 
 import {
   contestDuration,

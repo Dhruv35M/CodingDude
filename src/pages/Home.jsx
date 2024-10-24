@@ -8,53 +8,64 @@ import {
 } from "../shared/contestFilters";
 import InformationBanner from "../components/InformationBanner";
 import { has24HoursPassed } from "../shared/dateTimeUtility";
+import Footer from "../components/Footer";
 
 const Home = () => {
   const [items, setItems] = useState([]);
   const [isLoaded, setLoaded] = useState(false);
   const [error, setError] = useState(false);
-  const [heading, setHeading] = useState("Contests on Selected Platforms");
+  // const [heading, setHeading] = useState("Contests on Selected Platforms");
   const [filter, setFilter] = useState([]);
 
   // Handling menu button active and non-active
-  const [activeButton, setActiveButton] = useState(null);
+  const [activeButton, setActiveButton] = useState(1);
 
   let selectedSites = JSON.parse(localStorage.getItem("selected_sites"));
-  let contestChache =
-    JSON.parse(localStorage.getItem("contestChache")) ?? "null";
-  const notificationMessage =
-    localStorage.getItem("notification-message") ?? "null";
+  let contestChache = JSON.parse(localStorage.getItem("contestChache"));
+  const notificationMessage = localStorage.getItem("notification-message");
+
   let lastApiCall =
     JSON.parse(localStorage.getItem("time")) ?? new Date().toISOString();
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   useEffect(() => {
+    scrollToTop();
     setLoaded(false);
 
     const currentDate = new Date();
 
-    if (has24HoursPassed(lastApiCall) || contestChache === "null") {
+    const getValidContests = (contests) => {
+      // Sort by duration
+      contests.sort(
+        (a, b) => parseFloat(a.start_time) - parseFloat(b.start_time)
+      );
+
+      // Filter out expired/invalid contests
+      return contests.filter((item) => {
+        if (item) {
+          const endTime = new Date(item.end_time);
+          return endTime > currentDate;
+        }
+        return false;
+      });
+    };
+
+    if (has24HoursPassed(lastApiCall) || !contestChache) {
       fetch("https://contests.net/api/v1/all")
         .then((res) => res.json())
         .then((result) => {
           setLoaded(true);
-          // sorted by short duration to increasing
-          result.sort(
-            (a, b) => parseFloat(a.duration) - parseFloat(b.duration)
-          );
 
-          // filter out expired/ invalid contests
-          const validContests = result.filter((item) => {
-            if (item) {
-              const endTime = new Date(item.end_time);
-              return endTime > currentDate;
-            }
-            return false;
-          });
-
+          // Get valid contests from fetched data
+          const validContests = getValidContests(result);
           setItems(validContests);
+
           const filtered = filterBySelectedSites(validContests, selectedSites);
 
-          // all contests button by default
+          // Store contests and time in localStorage
           localStorage.setItem("contestChache", JSON.stringify(validContests));
           localStorage.setItem("time", JSON.stringify(lastApiCall));
 
@@ -66,38 +77,41 @@ const Home = () => {
           setFilter(filtered);
         })
         .catch((error) => {
-          console.error("error in feteching data ", error);
+          console.error("error in fetching data ", error);
           setLoaded(true);
           setError(error);
         });
 
-      // notification
+      // Notification fetch
       fetch("https://contests.net/api/v1/notification")
         .then((res) => res.json())
         .then((result) => {
-          if (notificationMessage !== result.message) {
+          if (!notificationMessage || notificationMessage !== result.message) {
             localStorage.setItem("notification-message", result.message);
             localStorage.setItem("bannerClosed", false);
           }
         })
         .catch((error) => {
-          console.error("error in feteching notification ", error);
+          console.error("error in fetching notification ", error);
           setLoaded(true);
           setError(error);
         });
     } else {
-      setItems(contestChache);
-      const filtered = filterBySelectedSites(contestChache, selectedSites);
+      // Get valid contests from localStorage data
+      const validContests = getValidContests(contestChache);
+      setItems(validContests);
 
+      const filtered = filterBySelectedSites(validContests, selectedSites);
       setFilter(filtered);
       setLoaded(true);
     }
   }, []);
 
   const filterContests = (filterFn, headingText, buttonId) => {
+    scrollToTop();
     setActiveButton(buttonId);
     const filteredList = filterFn(items, selectedSites);
-    setHeading(headingText);
+    // setHeading(headingText);
     setFilter(filteredList);
   };
 
@@ -148,12 +162,12 @@ const Home = () => {
 
       <div className="main">
         <div className="container">
-          <h2 className="center">{heading}</h2>
+          {/* <h2 className="center">{heading}</h2> */}
           <InformationBanner />
-          {/* <InformationBanner /> */}
           <div className="app-container">
             <ContestDetails error={error} isLoaded={isLoaded} items={filter} />
           </div>
+          <Footer />
         </div>
       </div>
     </>
